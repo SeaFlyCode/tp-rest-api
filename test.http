@@ -1,0 +1,76 @@
+# Projet NodeJS - API REST - Gestion de projets et tâches - Mathéo VIEILLEVILLE
+
+
+# ------------------------------- Section projet -------------------------------
+
+### Créer un nouveau projet
+POST http://localhost:3000/projects/
+Content-Type: application/json
+
+{ "name": "Mon projet2", "description": "Description du projet" }
+
+### récupère tous les projets
+GET http://localhost:3000/projects/
+
+### récupère tous les projets par ID
+GET http://localhost:3000/projects/6752d152ab473163a78f6c9a
+
+### Modifie le projet par ID
+PUT http://localhost:3000/projects/6752caa014c628a24209fce
+Content-Type: application/json
+
+{ "name": "Mon projet23", "description": "Description du projet", "status": "completed" }
+
+
+### Supprimer le projet par ID
+DELETE  http://localhost:3000/projects/6752cad714c628a24209fce7
+
+### Passe le projet en completed
+POST  http://localhost:3000/projects/6752cff6f2c0a64b1fcfd181/complete
+
+### Filtre les projets par status 
+GET http://localhost:3000/projects/by-status?status=complete
+
+
+
+# ------------------------------- Section taches -------------------------------
+
+
+### Créer une nouvelle tâche
+POST http://localhost:3000/tasks
+Content-Type: application/json
+
+{
+  "projectId": "6752d159ab473163a78f6c9f",
+  "title": "New Task 2 ",
+  "dueDate": "2023-12-31"
+}
+
+### Récupérer toutes les tâches
+GET http://localhost:3000/tasks
+
+### Récupérer une tâche par ID
+GET http://localhost:3000/tasks/6752d3567ceee621245a43b8
+
+### Récupérer une tâche par filtre projectId
+GET http://localhost:3000/tasks?projectId=6752d159ab473163a78f6c9f
+
+### Mettre à jour une tâche par ID
+PUT http://localhost:3000/tasks/6752d38f7ceee621245a43bb
+Content-Type: application/json
+
+{
+  "title": "Updated Task",
+  "done": true,
+  "dueDate": "2023-12-30"
+}
+
+### Passe la tache en "done" par ID
+POST http://localhost:3000/tasks/6752d3567ceee621245a43b8/mark-done
+
+### filtre les tâches par date définie dans le paramètre "date"
+GET http://localhost:3000/tasks/due-before?date=2021-12-30
+
+### Supprimer une tâche par ID
+DELETE http://localhost:3000/tasks/6752d38f7ceee621245a43bb
+
