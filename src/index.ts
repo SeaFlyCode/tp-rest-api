@@ -17,7 +17,7 @@ app.use('/', taskRoutes);
 app.use('/', projectRoutes);
 
 // Ajout de la connection mongoose
-const uri = process.env.URI;
+const uri = process.env.MONGO_URI;
 mongoose.connect(uri as string)
     .then(() => {
         console.log('Connected to MongoDB')
